@@ -98,7 +98,7 @@ function KapjeMemoAreEqualMutable(props: IProps) {
     return (
         <svg onClick={veranderKleur}>
             // heleboel svg magie
-            <path id='kapje' fill={props.kleurkapje}>...</path>
+            <path id='kapje' fill={props.kleurKapje}>...</path>
             // nog meer svg magie
         </svg>
     );

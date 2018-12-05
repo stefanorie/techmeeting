@@ -81,7 +81,7 @@ export default function Kapje(props: IProps) {
     return (
         <svg>
             // heleboel svg magie
-            <path id='kapje' fill={props.kleurkapje}>...</path>
+            <path id='kapje' fill={props.kleurKapje}>...</path>
             // nog meer svg magie
         </svg>
     );

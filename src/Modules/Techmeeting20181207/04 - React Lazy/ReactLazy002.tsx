@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { Button, createStyles, Grid, withStyles, WithStyles } from '@material-ui/core';
+import { createStyles, Grid, withStyles, WithStyles } from '@material-ui/core';
 import { TimelineMax } from 'gsap';
 import CodeBlock from 'src/Components/CodeBlock/CodeBlock';
-import KapjeMemo from 'src/Components/Kapje/KapjeMemo';
+import PageTitle from 'src/Components/PageTitle/PageTitle';
+
+const Kapje = React.lazy(() => import('src/Components/Kapje/Kapje'));
 
 interface IState {
     kleurKapje: string;
@@ -29,7 +31,7 @@ const styles = createStyles<ClassKeys>({
 type ClassKeys = 'container' | 'kapje' | 'kapjeContainer';
 type PropsType = WithStyles<ClassKeys>;
 
-class ReactMemo002 extends React.Component<PropsType, IState> {
+class ReactLazy002 extends React.Component<PropsType, IState> {
     private myTimeline: TimelineMax = new TimelineMax();
     constructor(props: PropsType) {
         super(props);
@@ -42,13 +44,18 @@ class ReactMemo002 extends React.Component<PropsType, IState> {
     componentDidMount() {
         this.myTimeline
             .addLabel('start', '+=0')
+            .to('#pageTitle', 1.5, { y: -150, autoAlpha: 1 }, '+=.5')
+            .addLabel('title', '+=0').addPause('title')
+            .to('#pageTitle', 1, { y: 150, autoAlpha: 0 })
             .fromTo('#codeGrid', 1, { y: 50, autoAlpha: 0 }, { y: 0, autoAlpha: 1 })
             .fromTo('#kapjeGrid', 1, { y: 50, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '-=.5')
             ;
     }
 
-    private changeColor = () => {
-        this.setState({ kleurKapje: '#03A9F4' });
+    resumePlay = () => {
+        if (this.myTimeline.paused()) {
+            this.myTimeline.play();
+        }
     }
 
     render() {
@@ -57,35 +64,17 @@ class ReactMemo002 extends React.Component<PropsType, IState> {
 
         return (
             <div>
+                <PageTitle onClick={this.resumePlay}>React Suspense / Lazy</PageTitle>
+
                 <Grid container spacing={24} className={classes.container}>
                     <Grid item xs={6} id='codeGrid'>
                         <CodeBlock>
                             {`
-interface IProps {
-    kleurKapje: string;
-}
+// import Kapje from 'src/Components/Kapje/Kapje';
 
-function KapjeMemo(props: IProps) {
-    return (
-        <svg>
-            // heleboel svg magie
-            <path id='kapje' fill={props.kleurKapje}>...</path>
-            // nog meer svg magie
-        </svg>
-    );
-}
+const Kapje = React.lazy(() => import('src/Components/Kapje/Kapje'));
 
-export default React.memo(KapjeMemo);
-                            `}
-                        </CodeBlock>
-
-                        <CodeBlock>
-                            {`
-interface IState {
-    kleurKapje: string;
-}
-
-export class ReactMemo002 extends React.Component<PropsType, IState> {
+export class ReactLazy001 extends React.Component<PropsType, IState> {
     constructor(props: PropsType) {
         super(props);
 
@@ -96,8 +85,9 @@ export class ReactMemo002 extends React.Component<PropsType, IState> {
 
     render() {
         return (
-            <KapjeMemo kleurKapje={this.state.kleurKapje} />
-            <Button onClick={this.changeColor}>Verander kleur</Button>
+            <React.Suspense fallback={<div>Laden...</div>}>
+                <Kapje kleurKapje={kleurKapje} className={classes.kapje} />
+            </React.Suspense>
         );
     }
 }
@@ -106,8 +96,9 @@ export class ReactMemo002 extends React.Component<PropsType, IState> {
                     </Grid>
                     <Grid item xs={6} id='kapjeGrid'>
                         <div className={classes.kapjeContainer}>
-                            <KapjeMemo kleurKapje={kleurKapje} className={classes.kapje} />
-                            <Button onClick={this.changeColor} variant='contained' color='primary'>Verander kleur</Button>
+                            <React.Suspense fallback={<div>Laden...</div>}>
+                                <Kapje kleurKapje={kleurKapje} className={classes.kapje} />
+                            </React.Suspense>
                         </div>
                     </Grid>
                 </Grid>
@@ -116,4 +107,4 @@ export class ReactMemo002 extends React.Component<PropsType, IState> {
     }
 }
 
-export default withStyles(styles)(ReactMemo002);
+export default withStyles(styles)(ReactLazy002);
