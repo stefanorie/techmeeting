@@ -1,0 +1,27 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "beautify.options": {
+        "css": {
+            "preserve_newlines": true,
+            "newline_between_rules": true,
+            "selector_separator_newline": false
+        }
+    },
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "node_modules": true,
+        ".vs": true
+    },
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "typescript.preferences.quoteStyle": "single",
+    "npm.packageManager": "yarn",
+    "tslint.autoFixOnSave": true,
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+}

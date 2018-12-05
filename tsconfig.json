@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "allowJs": false,
+        "jsx": "react",
+        "module": "es2015",
+        "moduleResolution": "node",
+        "baseUrl": ".",
+        "paths": {
+            "src/*": [
+                "src/*"
+            ],
+            "*": [
+                "node_modules/@types/*",
+                "*"
+            ]
+        },
+        "target": "es2015",
+        "outDir": "tsc-output",
+        "experimentalDecorators": false,
+        "noImplicitAny": true,
+        "noImplicitThis": false,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "removeComments": true,
+        "forceConsistentCasingInFileNames": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "pretty": true
+    }
+}

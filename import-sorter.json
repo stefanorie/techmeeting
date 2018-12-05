@@ -1,0 +1,39 @@
+{
+    "generalConfiguration": {
+        "sortOnBeforeSave": true
+    },
+    "importStringConfiguration": {
+        "maximumNumberOfImportExpressionsPerLine": {
+            "count": 9999
+        }
+    },
+    "sortConfiguration": {
+        "customOrderingRules": {
+            "defaultNumberOfEmptyLinesAfterGroup": 0,
+            "defaultOrderLevel": 50,
+            "rules": [
+                {
+                    "type": "importMember",
+                    "regex": "^[*]|^$",
+                    "orderLevel": 10
+                },
+                {
+                    "regex": "i18n|routing|auth|utils|lodash|print",
+                    "orderLevel": 20
+                },
+                {
+                    "regex": "^react|^@material|cropper|redux",
+                    "orderLevel": 30
+                },
+                {
+                    "regex": "src\/ApiClients",
+                    "orderLevel": 40
+                },
+                {
+                    "regex": "(src\/*|.\/*)",
+                    "orderLevel": 50
+                }
+            ]
+        }
+    }
+}

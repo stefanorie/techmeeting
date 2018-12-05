@@ -1,0 +1,179 @@
+import * as React from 'react';
+import { createStyles, Grid, withStyles, WithStyles } from '@material-ui/core';
+import { TimelineMax } from 'gsap';
+import CodeBlock from 'src/Components/CodeBlock/CodeBlock';
+import KapjeMemoAreEqualMutable from 'src/Components/Kapje/KapjeMemoAreEqualMutable';
+
+interface IBoom {
+    bladeren: boolean;
+    takken: number;
+    hoogte: number;
+}
+
+export interface ISprookje {
+    intro: string;
+    kapje: {
+        naam: string;
+        kleurKapje: string;
+    };
+    bos: IBoom[];
+}
+
+interface IState {
+    sprookje: ISprookje;
+}
+
+const styles = createStyles<ClassKeys>({
+    container: {
+        maxWidth: 1440,
+        margin: '0 auto',
+    },
+    kapje: {
+        width: 300,
+        height: 300,
+    },
+    kapjeContainer: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%',
+        flexDirection: 'column',
+    },
+});
+
+type ClassKeys = 'container' | 'kapje' | 'kapjeContainer';
+type PropsType = WithStyles<ClassKeys>;
+
+class ReactMemo004 extends React.Component<PropsType, IState> {
+    private myTimeline: TimelineMax = new TimelineMax();
+    constructor() {
+        super(undefined);
+
+        this.state = {
+            sprookje: {
+                intro: 'Er was eens...',
+                kapje: {
+                    naam: 'Kapje',
+                    kleurKapje: '#BE1E2D',
+                },
+                bos: [{
+                    bladeren: true,
+                    takken: 6,
+                    hoogte: 500,
+                }],
+            },
+        };
+    }
+
+    componentDidMount() {
+        this.myTimeline
+            .addLabel('start', '+=0')
+            .fromTo('#codeGrid', 1, { y: 50, autoAlpha: 0 }, { y: 0, autoAlpha: 1 })
+            .fromTo('#kapjeGrid', 1, { y: 50, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '-=.5')
+            ;
+    }
+
+    render() {
+        const { classes } = this.props;
+        const { sprookje } = this.state;
+
+        return (
+            <div>
+                <Grid container spacing={24} className={classes.container}>
+                    <Grid item xs={6} id='codeGrid'>
+                        <CodeBlock>
+                            {`
+
+interface IProps {
+    sprookje: ISprookje;
+    updateSprookje: (sprookje: ISprookje) => void;
+}
+
+function KapjeMemoAreEqualMutable(props: IProps) {
+    const veranderKleur = () => {
+        this.props.sprookje.kapje.kleurKapje = '#BE1E2D';
+        this.props.updateSprookje(sprookje);
+    };
+
+    return (
+        <svg onClick={veranderKleur}>
+            // heleboel svg magie
+            <path id='kapje' fill={props.kleurkapje}>...</path>
+            // nog meer svg magie
+        </svg>
+    );
+}
+
+function areEqual(prevProps: IProps, nextProps: IProps) {
+    return prevProps.sprookje.kapje.kleurKapje === nextProps.sprookje.kapje.kleurKapje;
+}
+
+export default React.memo(KapjeMemoAreEqualMutable, areEqual);
+                            `}
+                        </CodeBlock>
+
+                        <CodeBlock>
+                            {`
+interface IBoom {
+    bladeren: boolean;
+    takken: number;
+    hoogte: number;
+}
+
+export interface ISprookje {
+    intro: string;
+    kapje: {
+        naam: string;
+        kleurKapje: string;
+    };
+    bos: IBoom[];
+}
+
+interface IState {
+    sprookje: ISprookje;
+}
+
+export class ReactMemo004 extends React.Component<undefined, IState> {
+    constructor() {
+        super(undefined);
+
+        this.state = {
+            sprookje: {
+                intro: 'Er was eens...',
+                kapje: {
+                    naam: 'Kapje',
+                    kleurKapje: '#BE1E2D',
+                },
+                bos: [{
+                    bladeren: true,
+                    takken: 6,
+                    hoogte: 500,
+                }],
+            },
+        };
+    }
+
+    render() {
+        return (
+            <KapjeMemoAreEqualMutable
+                sprookje={this.state.sprookje}
+                updateSprookje={sprookje => this.setState({ sprookje })}
+            />
+        );
+    }
+}
+                            `}
+                        </CodeBlock>
+                    </Grid>
+                    <Grid item xs={6} id='kapjeGrid'>
+                        <div className={classes.kapjeContainer}>
+                            <KapjeMemoAreEqualMutable sprookje={sprookje} updateSprookje={sprookje => this.setState({ sprookje })} className={classes.kapje} />
+                        </div>
+                    </Grid>
+                </Grid>
+            </div>
+        );
+    }
+}
+
+export default withStyles(styles)(ReactMemo004);
