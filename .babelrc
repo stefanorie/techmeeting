@@ -12,5 +12,8 @@
                 "modules": false
             }
         ]
+    ],
+    "plugins": [
+        "dynamic-import-node"
     ]
 }

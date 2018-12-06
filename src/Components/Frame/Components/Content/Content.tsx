@@ -11,6 +11,12 @@ import ReactMemo002 from 'src/Modules/Techmeeting20181207/03 - React Memo (Immut
 import ReactMemo003 from 'src/Modules/Techmeeting20181207/03 - React Memo (Immutability)/ReactMemo003';
 import ReactMemo004 from 'src/Modules/Techmeeting20181207/03 - React Memo (Immutability)/ReactMemo004';
 import ReactMemo005 from 'src/Modules/Techmeeting20181207/03 - React Memo (Immutability)/ReactMemo005';
+import ReactLazy001 from 'src/Modules/Techmeeting20181207/04 - React Lazy/ReactLazy001';
+import ReactLazy002 from 'src/Modules/Techmeeting20181207/04 - React Lazy/ReactLazy002';
+import ReactHooks001 from 'src/Modules/Techmeeting20181207/05 - React Hooks/ReactHooks001';
+import ReactHooks002 from 'src/Modules/Techmeeting20181207/05 - React Hooks/ReactHooks002';
+import ReactVirtualized001 from 'src/Modules/Techmeeting20181207/06 - React Virtualized/ReactVirtualized001';
+import ReactVirtualized002 from 'src/Modules/Techmeeting20181207/06 - React Virtualized/ReactVirtualized002';
 
 interface IState {
     hasError: boolean;
@@ -70,6 +76,14 @@ class Content extends React.Component<PropsType, IState> {
                 <Route exact path='/react-memo/004' component={ReactMemo004} />
                 <Route exact path='/react-memo/005' component={ReactMemo005} />
 
+                <Route exact path='/react-lazy/001' component={ReactLazy001} />
+                <Route exact path='/react-lazy/002' component={ReactLazy002} />
+
+                <Route exact path='/react-hooks/001' component={ReactHooks001} />
+                <Route exact path='/react-hooks/002' component={ReactHooks002} />
+
+                <Route exact path='/react-virtualized/001' component={ReactVirtualized001} />
+                <Route exact path='/react-virtualized/002' component={ReactVirtualized002} />
             </Switch>
         </ScrollContext.Provider>;
     }

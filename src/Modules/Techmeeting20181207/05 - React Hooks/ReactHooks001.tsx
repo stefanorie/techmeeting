@@ -7,7 +7,6 @@ import PageTitle from 'src/Components/PageTitle/PageTitle';
 const styles = createStyles<ClassKeys>({
     container: {
         maxWidth: 1440,
-        margin: '0 auto',
     },
 });
 
@@ -23,8 +22,8 @@ class ReactHooks001 extends React.Component<PropsType> {
             .to('#pageTitle', 1.5, { y: -150, autoAlpha: 1 }, '+=.5')
             .addLabel('title', '+=0').addPause('title')
             .to('#pageTitle', 1, { y: 150, autoAlpha: 0 })
-            .fromTo('#codeGrid', 1, { y: 50, autoAlpha: 0 }, { y: 0, autoAlpha: 1 })
-            .fromTo('#kapjeGrid', 1, { y: 50, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '-=.5')
+            .fromTo('#stateGrid', 1, { y: 50, autoAlpha: 0 }, { y: 0, autoAlpha: 1 })
+            .fromTo('#hookGrid', 1, { y: 50, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '-=.5')
             ;
     }
 

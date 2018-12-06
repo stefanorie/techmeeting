@@ -45,6 +45,15 @@ class Toolbar extends React.Component<PropsType, IState> {
             '/react-memo/003',
             '/react-memo/004',
             '/react-memo/005',
+
+            '/react-lazy/001',
+            '/react-lazy/002',
+
+            '/react-hooks/001',
+            '/react-hooks/002',
+
+            '/react-virtualized/001',
+            '/react-virtualized/002',
         ];
     }
 

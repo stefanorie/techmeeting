@@ -7,7 +7,6 @@ import PageTitle from 'src/Components/PageTitle/PageTitle';
 const styles = createStyles<ClassKeys>({
     container: {
         maxWidth: 1440,
-        margin: '0 auto',
     },
 });
 

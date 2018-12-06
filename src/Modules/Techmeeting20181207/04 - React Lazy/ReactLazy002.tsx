@@ -2,9 +2,12 @@ import * as React from 'react';
 import { createStyles, Grid, withStyles, WithStyles } from '@material-ui/core';
 import { TimelineMax } from 'gsap';
 import CodeBlock from 'src/Components/CodeBlock/CodeBlock';
-import PageTitle from 'src/Components/PageTitle/PageTitle';
 
-const Kapje = React.lazy(() => import('src/Components/Kapje/Kapje'));
+const Kapje = React.lazy(() => {
+    return new Promise(resolve => setTimeout(resolve, 5000)).then(
+        () => import('src/Components/Kapje/Kapje')
+    );
+});
 
 interface IState {
     kleurKapje: string;
@@ -13,7 +16,6 @@ interface IState {
 const styles = createStyles<ClassKeys>({
     container: {
         maxWidth: 1440,
-        margin: '0 auto',
     },
     kapje: {
         width: 300,
@@ -44,9 +46,6 @@ class ReactLazy002 extends React.Component<PropsType, IState> {
     componentDidMount() {
         this.myTimeline
             .addLabel('start', '+=0')
-            .to('#pageTitle', 1.5, { y: -150, autoAlpha: 1 }, '+=.5')
-            .addLabel('title', '+=0').addPause('title')
-            .to('#pageTitle', 1, { y: 150, autoAlpha: 0 })
             .fromTo('#codeGrid', 1, { y: 50, autoAlpha: 0 }, { y: 0, autoAlpha: 1 })
             .fromTo('#kapjeGrid', 1, { y: 50, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '-=.5')
             ;
@@ -59,20 +58,24 @@ class ReactLazy002 extends React.Component<PropsType, IState> {
     }
 
     render() {
+        console.log('render');
         const { classes } = this.props;
         const { kleurKapje } = this.state;
 
         return (
             <div>
-                <PageTitle onClick={this.resumePlay}>React Suspense / Lazy</PageTitle>
-
                 <Grid container spacing={24} className={classes.container}>
                     <Grid item xs={6} id='codeGrid'>
                         <CodeBlock>
                             {`
 // import Kapje from 'src/Components/Kapje/Kapje';
 
-const Kapje = React.lazy(() => import('src/Components/Kapje/Kapje'));
+const Kapje = React.lazy(() => {
+    return new Promise(resolve => setTimeout(resolve, 5000)).then(
+        () => import('src/Components/Kapje/Kapje')
+    );
+});
+
 
 export class ReactLazy001 extends React.Component<PropsType, IState> {
     constructor(props: PropsType) {

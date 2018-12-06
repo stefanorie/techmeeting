@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createStyles, Grid, withStyles, WithStyles } from '@material-ui/core';
 import { TimelineMax } from 'gsap';
+import CodeBlock from 'src/Components/CodeBlock/CodeBlock';
 import Kapje from 'src/Components/Kapje/Kapje';
 import PageTitle from 'src/Components/PageTitle/PageTitle';
 
@@ -11,7 +12,6 @@ interface IState {
 const styles = createStyles<ClassKeys>({
     container: {
         maxWidth: 1440,
-        margin: '0 auto',
     },
     kapje: {
         width: 300,
@@ -26,6 +26,7 @@ const styles = createStyles<ClassKeys>({
     },
     gridItemBackground: {
         backgroundColor: 'rgba(255, 255, 255, 0.6)',
+        padding: 8,
     },
 });
 
@@ -70,11 +71,20 @@ class ReactLazy001 extends React.Component<PropsType, IState> {
             <div>
                 <PageTitle onClick={this.resumePlay}>React Suspense / Lazy</PageTitle>
 
-                <Grid container className={classes.container} onClick={this.resumePlay}>
+                <Grid container className={classes.container} onClick={this.resumePlay} style={{ width: '70%' }}>
                     <Grid item xs={6} id='bundleGrid' className={classes.gridItemBackground}>
-                        <div className={classes.kapjeContainer}>
-                            bundle.js
-                        </div>
+                        <CodeBlock>
+                            {`
+// tsconfig.json
+// "module": "esnext"
+
+// babel-plugin-dynamic-import-node
+// .babelrc
+// { "plugins": ["dynamic-import-node"] }
+
+bundle.js
+                            `}
+                        </CodeBlock>
                     </Grid>
                     <Grid item xs={6} id='kapjeGrid' className={classes.gridItemBackground}>
                         <div className={classes.kapjeContainer}>
