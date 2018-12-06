@@ -26,9 +26,6 @@ class ReactVirtualized002 extends React.Component<PropsType> {
     componentDidMount() {
         this.myTimeline
             .addLabel('start', '+=0')
-            .to('#pageTitle', 1.5, { y: -150, autoAlpha: 1 }, '+=.5')
-            .addLabel('title', '+=0').addPause('title')
-            .to('#pageTitle', 1, { y: 150, autoAlpha: 0 })
             .fromTo('#codeGrid', 1, { y: 50, autoAlpha: 0 }, { y: 0, autoAlpha: 1 })
             .fromTo('#listGrid', 1, { y: 50, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '-=.5')
             ;
@@ -49,8 +46,6 @@ class ReactVirtualized002 extends React.Component<PropsType> {
 
         return (
             <div>
-                <PageTitle onClick={this.resumePlay}>React Virtualized (package)</PageTitle>
-
                 <Grid container spacing={24} className={classes.container}>
                     <Grid item xs={6} id='codeGrid'>
                         <CodeBlock>
