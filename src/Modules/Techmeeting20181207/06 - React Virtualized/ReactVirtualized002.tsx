@@ -2,7 +2,6 @@ import * as React from 'react';
 import { createStyles, Grid, Paper, WithStyles, withStyles } from '@material-ui/core';
 import { TimelineMax } from 'gsap';
 import CodeBlock from 'src/Components/CodeBlock/CodeBlock';
-import PageTitle from 'src/Components/PageTitle/PageTitle';
 
 const RandomListVirtualized = React.lazy(() => import('src/Components/RandomList/RandomListVirtualized'));
 
