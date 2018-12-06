@@ -58,7 +58,6 @@ class ReactLazy002 extends React.Component<PropsType, IState> {
     }
 
     render() {
-        console.log('render');
         const { classes } = this.props;
         const { kleurKapje } = this.state;
 
