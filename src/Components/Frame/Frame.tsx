@@ -4,12 +4,14 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import Toolbar from 'src/Components/Toolbar/Toolbar';
 import Content from './Components/Content/Content';
 
-const background = require('src/Resources/Images/forest_background.jpg');
+// Doesn't work when building it locally
+// const background = require('src/Resources/Images/forest_background.jpg');
 
 const styles = (theme: Theme) => createStyles<ClassKeys>({
     '@global body': {
         fontFamily: 'Roboto',
-        backgroundImage: `url(${background})`,
+        // backgroundImage: `url(${background})`,
+        backgroundImage: `url(/static/site/forest_background-2wlzLP6W.jpg)`,
         backgroundSize: 'cover',
         overflow: 'hidden',
     },
