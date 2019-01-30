@@ -2,7 +2,6 @@ import * as React from 'react';
 import { createStyles, Theme, WithStyles, withStyles } from '@material-ui/core';
 import { Route, Switch } from 'react-router';
 import Landing from 'src/Modules/Landing/Landing';
-import ReactLanding from 'src/Modules/Techmeeting20181207/01 - Landing/ReactLanding';
 import ReactRouting from 'src/Modules/Techmeeting20181207/ReactRouting';
 import MeteorRouting from 'src/Modules/TechmeetingMeteor/MeteorRouting';
 
@@ -25,6 +24,7 @@ const styles = (theme: Theme) => createStyles<ClassKeys>({
     content: {
         maxWidth: 1440,
         margin: '0 auto',
+        height: '100%',
     },
 });
 
