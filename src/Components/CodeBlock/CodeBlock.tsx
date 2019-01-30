@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createStyles, WithStyles, withStyles } from '@material-ui/core';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vs } from 'react-syntax-highlighter/styles/prism';
+import { vs } from 'react-syntax-highlighter/dist/styles/prism';
 
 interface IProps {
     children: React.ReactNode;

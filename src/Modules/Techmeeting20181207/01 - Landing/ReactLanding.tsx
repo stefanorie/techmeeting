@@ -38,7 +38,7 @@ const styles = createStyles<ClassKeys>({
 type ClassKeys = 'title' | 'agenda' | 'disneyCastle' | 'container' | '@global body';
 type PropsType = WithStyles<ClassKeys>;
 
-class Landing extends React.Component<PropsType> {
+class ReactLanding extends React.Component<PropsType> {
     private myTimeline: TimelineMax = new TimelineMax();
     private myTitle: any = null;
     private myAgenda: any = null;
@@ -78,6 +78,7 @@ class Landing extends React.Component<PropsType> {
     }
 
     render() {
+        console.log('ReactLanding render');
         const { classes } = this.props;
 
         return (
@@ -98,4 +99,4 @@ class Landing extends React.Component<PropsType> {
     }
 }
 
-export default withStyles(styles)(Landing);
+export default withStyles(styles)(ReactLanding);

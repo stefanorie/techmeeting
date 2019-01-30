@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { createStyles, Theme, WithStyles, withStyles } from '@material-ui/core';
 import { RouteComponentProps, withRouter } from 'react-router';
-import Toolbar from 'src/Components/Toolbar/Toolbar';
 import Content from './Components/Content/Content';
 
 // Doesn't work when building it locally
@@ -11,7 +10,7 @@ const styles = (theme: Theme) => createStyles<ClassKeys>({
     '@global body': {
         fontFamily: 'Roboto',
         // backgroundImage: `url(${background})`,
-        backgroundImage: `url(/static/site/forest_background-2wlzLP6W.jpg)`,
+        // backgroundImage: `url(/static/site/forest_background-2wlzLP6W.jpg)`,
         backgroundSize: 'cover',
         overflow: 'hidden',
     },
@@ -34,7 +33,6 @@ class Frame extends React.PureComponent<PropsType> {
         return (
             <div className={this.props.classes.wrapper}>
                 <Content />
-                <Toolbar />
             </div>
         );
     }

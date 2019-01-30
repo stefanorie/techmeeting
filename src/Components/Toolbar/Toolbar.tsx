@@ -77,6 +77,8 @@ class Toolbar extends React.Component<PropsType, IState> {
     }
 
     render() {
+        console.log('Toolbar render');
+
         const { classes } = this.props;
         const { currentPageIndex } = this.state;
         const pageUrls = this.getPageUrls();

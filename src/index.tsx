@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Routing from 'src/routing';
 import { CssBaseline } from '@material-ui/core';
-import { Route, Router, Switch } from 'react-router-dom';
+import { Route, Router, Switch } from 'react-router';
 import Frame from 'src/Components/Frame/Frame';
 
 // CSS for react virtualized
