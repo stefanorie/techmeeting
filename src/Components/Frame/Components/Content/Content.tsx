@@ -22,7 +22,7 @@ const styles = (theme: Theme) => createStyles<ClassKeys>({
         height: '100vh',
     },
     content: {
-        maxWidth: 1440,
+        // maxWidth: 1440,
         margin: '0 auto',
         height: '100%',
     },
