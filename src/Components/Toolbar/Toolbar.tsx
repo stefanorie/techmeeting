@@ -33,27 +33,27 @@ class Toolbar extends React.Component<PropsType, IState> {
 
     private getPageUrls() {
         return [
-            '/',
+            '/react',
 
-            '/react-context-api/001',
-            '/react-context-api/002',
-            '/react-context-api/003',
-            '/react-context-api/004',
+            '/react/react-context-api/001',
+            '/react/react-context-api/002',
+            '/react/react-context-api/003',
+            '/react/react-context-api/004',
 
-            '/react-memo/001',
-            '/react-memo/002',
-            '/react-memo/003',
-            '/react-memo/004',
-            '/react-memo/005',
+            '/react/react-memo/001',
+            '/react/react-memo/002',
+            '/react/react-memo/003',
+            '/react/react-memo/004',
+            '/react/react-memo/005',
 
-            '/react-lazy/001',
-            '/react-lazy/002',
+            '/react/react-lazy/001',
+            '/react/react-lazy/002',
 
-            '/react-hooks/001',
-            '/react-hooks/002',
+            '/react/react-hooks/001',
+            '/react/react-hooks/002',
 
-            '/react-virtualized/001',
-            '/react-virtualized/002',
+            '/react/react-virtualized/001',
+            '/react/react-virtualized/002',
         ];
     }
 
@@ -77,8 +77,6 @@ class Toolbar extends React.Component<PropsType, IState> {
     }
 
     render() {
-        console.log('Toolbar render');
-
         const { classes } = this.props;
         const { currentPageIndex } = this.state;
         const pageUrls = this.getPageUrls();

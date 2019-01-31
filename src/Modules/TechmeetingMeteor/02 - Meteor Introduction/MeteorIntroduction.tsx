@@ -7,7 +7,6 @@ const logoReact = require('src/Resources/Images/logo-react.png');
 const logoAngular = require('src/Resources/Images/logo-angular.png');
 const logoBlaze = require('src/Resources/Images/logo-blaze.png');
 const meteorLandscapeUrl = require('src/Resources/Images/meteor-map.png');
-const meteorPublicationsUrl = require('src/Resources/Images/meteor-publications.jpg');
 
 interface IProps {
 }
@@ -152,7 +151,6 @@ class MeteorIntroduction extends React.Component<PropsType, IState> {
                     <img src={logoBlaze} />
                     <img src={logoReact} />
                     <img src={meteorLandscapeUrl} />
-                    <img src={meteorPublicationsUrl} />
                 </div>
             </div>
         );

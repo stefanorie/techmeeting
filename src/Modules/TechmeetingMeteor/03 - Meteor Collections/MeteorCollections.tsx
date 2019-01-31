@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Routing from 'src/routing';
 import { createStyles, WithStyles, withStyles } from '@material-ui/core';
 import { animated, Trail, Transition } from 'react-spring';
 import CodeBlock from 'src/Components/CodeBlock/CodeBlock';
@@ -197,6 +198,17 @@ export default withTracker(() => {
         ];
     }
 
+    private handleClick = () => {
+        const { pageIndex } = this.state;
+        const pages = this.getPages();
+
+        this.setState({ pageIndex: pageIndex + 1 });
+
+        if (pageIndex === pages.length - 1) {
+            window.setTimeout(() => Routing.navigate('/meteor/003'), 1000);
+        }
+    }
+
     render() {
         const { classes } = this.props;
         const { pageIndex } = this.state;
@@ -204,7 +216,7 @@ export default withTracker(() => {
         const pages = this.getPages();
 
         return (
-            <div className={classes.main} onClick={() => this.setState({ pageIndex: pageIndex + 1 })}>
+            <div className={classes.main} onClick={this.handleClick}>
                 <Transition
                     native
                     reset

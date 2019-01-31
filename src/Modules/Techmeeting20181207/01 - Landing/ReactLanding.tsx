@@ -78,7 +78,6 @@ class ReactLanding extends React.Component<PropsType> {
     }
 
     render() {
-        console.log('ReactLanding render');
         const { classes } = this.props;
 
         return (
