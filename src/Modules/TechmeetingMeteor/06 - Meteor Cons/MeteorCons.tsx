@@ -78,12 +78,17 @@ class MeteorCons extends React.Component<PropsType, IState> {
             ),
             (style: any) => (
                 <animated.div style={{ ...style }}>
-                    - Slecht / niet onderhoudde packages
+                    - Slecht / niet onderhouden packages
                 </animated.div>
             ),
             (style: any) => (
                 <animated.div style={{ ...style }}>
                     - Niet populair
+                </animated.div>
+            ),
+            (style: any) => (
+                <animated.div style={{ ...style }}>
+                    - Hosting is lastig (of duur)
                 </animated.div>
             ),
         ];

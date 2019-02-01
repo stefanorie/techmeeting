@@ -157,7 +157,7 @@ Activities.attachSchema(ActivitiesSchema);
                 <animated.div style={{ ...style }} className={classes.codeBlockContainer}>
                     <CodeBlock>
                         {`
-// imports/api/Activities/server/publications.ts
+// imports/api/Activities/server/ActivitiesPublications.ts
 
 import { Meteor } from 'meteor/meteor';
 import { Activities } from '../activities.ts';
@@ -194,6 +194,60 @@ export default withTracker(() => {
     };
 })(App);
 
+                        `}
+                    </CodeBlock>
+                </animated.div>
+            ),
+            (style: any) => (
+                <animated.div style={{ ...style }} className={classes.codeBlockContainer}>
+                    <CodeBlock>
+                        {`
+// imports/api/Activities/server/ActivitiesMethods.ts
+
+import { Meteor } from 'meteor/meteor';
+import { IActivity, Activities, ActivitySchema } from '../Activities';
+
+Meteor.methods({
+    'insertActivity'(activity: IActivity) {
+        try {
+            ActivitySchema.validate(activity);
+            Activities.insert(activity);
+        } catch (error) {
+            throw new Meteor.Error('activity-not-valid', 'Inserted activity is not valid.');
+        }
+    }
+});
+
+
+// import/ui/pages/App/App.tsx
+
+import * as React from 'react';
+import { withTracker } from 'meteor/react-meteor-data';
+import { Activities } from '../../../api/Activities/Activities.ts';
+
+interface IProps {
+    activities: IActivity[];
+}
+
+function App(props: IProps) {
+    const handleClick = () => {
+        // Create a test activity to insert
+        const activity: IActivity = {
+            _id: uuid.v4(),
+            createdAt: new Date(),
+            name: 'Test',
+            userId: '12345,
+        }
+
+        Meteor.call('insertActivity', activity);
+    }
+
+    return (
+        <Button onClick={handleClick}>
+            Activiteit toevoegen
+        </Button>
+    );
+}
                         `}
                     </CodeBlock>
                 </animated.div>
