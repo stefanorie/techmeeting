@@ -2,7 +2,7 @@ import * as historyPackage from 'history';
 
 export default class Routing {
     // Hash router is needed when locally running it via index.html without a server
-    private static _history = historyPackage.createBrowserHistory();
+    private static _history = historyPackage.createHashHistory();
 
     public static history() {
         return Routing._history;

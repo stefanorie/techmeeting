@@ -1,12 +1,7 @@
 import * as React from 'react';
 import Routing from 'src/routing';
 import { createStyles, WithStyles, withStyles } from '@material-ui/core';
-import { animated, Trail, Transition } from 'react-spring';
-
-const logoReact = require('src/Resources/Images/logo-react.png');
-const logoAngular = require('src/Resources/Images/logo-angular.png');
-const logoBlaze = require('src/Resources/Images/logo-blaze.png');
-const meteorLandscapeUrl = require('src/Resources/Images/meteor-map.png');
+import { animated, Transition } from 'react-spring';
 
 interface IProps {
 }
@@ -45,19 +40,12 @@ const styles = createStyles<ClassKeys>({
         display: 'flex',
         flexDirection: 'column',
     },
-    logo: {
-        margin: '0 32px',
-    },
-    landscapeImage: {
-        boxShadow: '0 3px 6px #111111',
-        borderRadius: 8,
-    },
 });
 
-type ClassKeys = 'main' | 'column' | 'logo' | 'landscapeImage';
+type ClassKeys = 'main' | 'column';
 type PropsType = IProps & WithStyles<ClassKeys>;
 
-class MeteorIntroduction extends React.Component<PropsType, IState> {
+class MeteorCons extends React.Component<PropsType, IState> {
     constructor(props: PropsType) {
         super(props);
 
@@ -68,63 +56,48 @@ class MeteorIntroduction extends React.Component<PropsType, IState> {
 
     private getPages = () => {
         const { classes } = this.props;
-
-        const items = [
-            'Open source',
-            'full-stack',
-            'javascript',
-            'platform',
-        ];
-
         return [
             (style: any) => (
                 <animated.div style={{ ...style }}>
+                    Zelf aan de slag!
+                </animated.div>
+            ),
+            (style: any) => (
+                <animated.div style={{ ...style }}>
+                    choco install meteor
+                </animated.div>
+            ),
+            (style: any) => (
+                <animated.div style={{ ...style }}>
                     <div className={classes.column}>
-                        <Trail
-                            config={{ duration: 1400 }}
-                            items={items}
-                            keys={item => item}
-                            from={{ transform: 'translate3d(-400px, 0, 0)' }}
-                            to={{ transform: 'translate3d(0, 0, 0)' }}>
-                            {item => props => <div style={props}>{item}</div>}
-                        </Trail>
+                        <div>meteor create new-blaze-app</div>
+                        <br />
+                        <div>meteor create --react new-react-app</div>
                     </div>
                 </animated.div>
             ),
             (style: any) => (
                 <animated.div style={{ ...style }}>
                     <div className={classes.column}>
-                        <div>Meteor packages</div>
-                        <div>atmospherejs</div>
+                        <div>meteor npm install --save react react-dom</div>
+                        <div>meteor remove blaze-html-templates</div>
+                        <div>meteor add static-html</div>
                     </div>
+                </animated.div>
+            ),
+            (style: any) => (
+                <animated.div style={{ ...style }}>
+                    meteor --port 4000
                 </animated.div>
             ),
             (style: any) => (
                 <animated.div style={{ ...style }}>
                     <div className={classes.column}>
-                        <div>Meteor Galaxy Hosting</div>
+                        <div>git clone git@github.com:meteor/simple-todos-react.git</div>
+                        <div>cd simple-todos-react</div>
+                        <div>meteor npm install</div>
+                        <div>meteor</div>
                     </div>
-                </animated.div>
-            ),
-            (style: any) => (
-                <animated.div style={{ ...style }}>
-                    <div className={classes.column}>
-                        <div>Real-time</div>
-                        <div>database</div>
-                        <div>updates</div>
-                    </div>
-                </animated.div>
-            ),
-            (style: any) => (
-                <animated.div style={{ ...style }}>
-                    <img width='20%' className={classes.logo} src={logoAngular} />
-                    <img width='15%' className={classes.logo} src={logoBlaze} />
-                    <img width='25%' className={classes.logo} src={logoReact} />
-                </animated.div>
-            ),
-            (style: any) => (
-                <animated.div style={{ ...style }}>
-                    <img className={classes.landscapeImage} src={meteorLandscapeUrl} />
                 </animated.div>
             ),
         ];
@@ -137,7 +110,7 @@ class MeteorIntroduction extends React.Component<PropsType, IState> {
         this.setState({ pageIndex: pageIndex + 1 });
 
         if (pageIndex === pages.length - 1) {
-            window.setTimeout(() => Routing.navigate('/meteor/002'), 1000);
+            window.setTimeout(() => Routing.navigate('/meteor/007'), 1000);
         }
     }
 
@@ -159,17 +132,9 @@ class MeteorIntroduction extends React.Component<PropsType, IState> {
                     leave={{ opacity: 0, transform: 'translate3d(-50%,0,0)' }}>
                     {(index: number) => pages[index]}
                 </Transition>
-
-                {/* Preload images  */}
-                <div style={{ opacity: 0, display: 'none' }}>
-                    <img src={logoAngular} />
-                    <img src={logoBlaze} />
-                    <img src={logoReact} />
-                    <img src={meteorLandscapeUrl} />
-                </div>
             </div>
         );
     }
 }
 
-export default withStyles(styles)(MeteorIntroduction);
+export default withStyles(styles)(MeteorCons);

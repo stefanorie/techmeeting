@@ -186,6 +186,9 @@ function App(props: IProps) {
 }
 
 export default withTracker(() => {
+    // Subscribe to the activities publication
+    Meteor.subscribe('activities');
+
     return {
         activities: Activities.find({}).fetch(),
     };

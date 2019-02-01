@@ -36,16 +36,12 @@ const styles = createStyles<ClassKeys>({
             textShadow: '0 3px 6px #111111',
         },
     },
-    column: {
-        display: 'flex',
-        flexDirection: 'column',
-    },
 });
 
-type ClassKeys = 'main' | 'column';
+type ClassKeys = 'main';
 type PropsType = IProps & WithStyles<ClassKeys>;
 
-class MeteorPros extends React.Component<PropsType, IState> {
+class MeteorDemo extends React.Component<PropsType, IState> {
     constructor(props: PropsType) {
         super(props);
 
@@ -58,32 +54,7 @@ class MeteorPros extends React.Component<PropsType, IState> {
         return [
             (style: any) => (
                 <animated.div style={{ ...style }}>
-                    Voordelen
-                </animated.div>
-            ),
-            (style: any) => (
-                <animated.div style={{ ...style }}>
-                    + Alles in één oplossing
-                </animated.div>
-            ),
-            (style: any) => (
-                <animated.div style={{ ...style }}>
-                    + Snel prototypes bouwen
-                </animated.div>
-            ),
-            (style: any) => (
-                <animated.div style={{ ...style }}>
-                    + Real-time data
-                </animated.div>
-            ),
-            (style: any) => (
-                <animated.div style={{ ...style }}>
-                    + Front-end frameworks ondersteuning
-                </animated.div>
-            ),
-            (style: any) => (
-                <animated.div style={{ ...style }}>
-                    + Continue updates (2011 - 2019+)
+                    Demo!
                 </animated.div>
             ),
         ];
@@ -96,7 +67,7 @@ class MeteorPros extends React.Component<PropsType, IState> {
         this.setState({ pageIndex: pageIndex + 1 });
 
         if (pageIndex === pages.length - 1) {
-            window.setTimeout(() => Routing.navigate('/meteor/005'), 1000);
+            window.setTimeout(() => Routing.navigate('/meteor/008'), 1000);
         }
     }
 
@@ -123,4 +94,4 @@ class MeteorPros extends React.Component<PropsType, IState> {
     }
 }
 
-export default withStyles(styles)(MeteorPros);
+export default withStyles(styles)(MeteorDemo);
