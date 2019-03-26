@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { createStyles, Grid, withStyles, WithStyles } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
+import { createStyles, withStyles, WithStyles } from '@material-ui/styles';
 import { TimelineMax } from 'gsap';
 import CodeBlock from 'src/Components/CodeBlock/CodeBlock';
 import KapjeMemoAreEqualMutable from 'src/Components/Kapje/KapjeMemoAreEqualMutable';
@@ -23,7 +24,7 @@ interface IState {
     sprookje: ISprookje;
 }
 
-const styles = createStyles<ClassKeys>({
+const styles = createStyles<ClassKeys, {}>({
     container: {
         maxWidth: 1440,
     },
@@ -78,7 +79,7 @@ class ReactMemo004 extends React.Component<PropsType, IState> {
 
         return (
             <div>
-                <Grid container spacing={24} className={classes.container}>
+                <Grid container spacing={3} className={classes.container}>
                     <Grid item xs={6} id='codeGrid'>
                         <CodeBlock>
                             {`

@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { createStyles, Grid, Paper, WithStyles, withStyles } from '@material-ui/core';
+import { Grid, Paper } from '@material-ui/core';
+import { createStyles, withStyles, WithStyles } from '@material-ui/styles';
 import { TimelineMax } from 'gsap';
 import CodeBlock from 'src/Components/CodeBlock/CodeBlock';
 
 const RandomListVirtualized = React.lazy(() => import('src/Components/RandomList/RandomListVirtualized'));
 
-const styles = createStyles<ClassKeys>({
+const styles = createStyles<ClassKeys, {}>({
     container: {
         maxWidth: 1440,
     },
@@ -45,7 +46,7 @@ class ReactVirtualized002 extends React.Component<PropsType> {
 
         return (
             <div>
-                <Grid container spacing={24} className={classes.container}>
+                <Grid container spacing={3} className={classes.container}>
                     <Grid item xs={6} id='codeGrid'>
                         <CodeBlock>
                             {`

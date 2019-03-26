@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createStyles, withStyles } from '@material-ui/core';
+import { createStyles, withStyles } from '@material-ui/styles';
 
 interface IProps {
     className?: string;

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { createStyles, WithStyles, withStyles } from '@material-ui/core';
+import { createStyles, WithStyles, withStyles } from '@material-ui/styles';
 
 interface IProps {
     children: string;
     onClick?: () => void;
 }
 
-const styles = createStyles<ClassKeys>({
+const styles = createStyles<ClassKeys, {}>({
     title: {
         backgroundColor: 'rgba(255, 255, 255, 0.3)',
         fontSize: 76,

@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Routing from 'src/routing';
 import { CssBaseline } from '@material-ui/core';
+import { StylesProvider } from '@material-ui/styles';
 import { Route, Router, Switch } from 'react-router';
 import Frame from 'src/Components/Frame/Frame';
 
@@ -17,11 +18,13 @@ class App extends React.Component<any, any> {
         return (
             <>
                 <CssBaseline />
+                {/* <StylesProvider injectFirst> */}
                 <Router history={Routing.history()}>
                     <Switch>
                         <Route path='*' component={Frame} />
                     </Switch>
                 </Router>
+                {/* </StylesProvider> */}
             </>
         );
     }

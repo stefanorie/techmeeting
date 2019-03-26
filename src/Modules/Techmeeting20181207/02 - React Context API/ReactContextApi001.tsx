@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { createStyles, Grid, withStyles, WithStyles } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
+import { createStyles, withStyles, WithStyles } from '@material-ui/styles';
 import { TimelineMax } from 'gsap';
 import CodeBlock from 'src/Components/CodeBlock/CodeBlock';
 import PageTitle from 'src/Components/PageTitle/PageTitle';
 
-const styles = createStyles<ClassKeys>({
+const styles = createStyles<ClassKeys, {}>({
     container: {
         maxWidth: 600,
         margin: '0 auto',
@@ -53,7 +54,7 @@ class ReactContextApi001 extends React.Component<PropsType> {
         return (
             <>
                 <PageTitle onClick={this.resumePlay}>React Context API</PageTitle>
-                <Grid container spacing={24} className={classes.container}>
+                <Grid container spacing={3} className={classes.container}>
                     <Grid item xs={12}>
                         <CodeBlock id='sprookje' onClick={this.resumePlay}>
                             {`

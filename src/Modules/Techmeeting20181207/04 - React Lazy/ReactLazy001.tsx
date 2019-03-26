@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { createStyles, Grid, withStyles, WithStyles } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
+import { createStyles, withStyles, WithStyles } from '@material-ui/styles';
 import { TimelineMax } from 'gsap';
 import CodeBlock from 'src/Components/CodeBlock/CodeBlock';
 import Kapje from 'src/Components/Kapje/Kapje';
@@ -9,7 +10,7 @@ interface IState {
     kleurKapje: string;
 }
 
-const styles = createStyles<ClassKeys>({
+const styles = createStyles<ClassKeys, {}>({
     container: {
         maxWidth: 1440,
     },

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Routing from 'src/routing';
-import { createStyles, WithStyles, withStyles } from '@material-ui/core';
+import { createStyles, withStyles, WithStyles } from '@material-ui/styles';
 import { animated, Trail, Transition } from 'react-spring';
 
 const logoReact = require('src/Resources/Images/logo-react.png');
@@ -15,7 +15,7 @@ interface IState {
     pageIndex: number;
 }
 
-const styles = createStyles<ClassKeys>({
+const styles = createStyles<ClassKeys, {}>({
     main: {
         position: 'relative',
         width: '100%',

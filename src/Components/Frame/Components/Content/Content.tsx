@@ -1,24 +1,25 @@
 import * as React from 'react';
-import { createStyles, Theme, WithStyles, withStyles } from '@material-ui/core';
+import { createStyles, WithStyles, withStyles } from '@material-ui/styles';
 import { Route, Switch } from 'react-router';
 import Landing from 'src/Modules/Landing/Landing';
 import ReactRouting from 'src/Modules/Techmeeting20181207/ReactRouting';
 import MeteorRouting from 'src/Modules/TechmeetingMeteor/MeteorRouting';
+import { Theme } from '@material-ui/core';
 
 interface IState {
     hasError: boolean;
     error: Error;
 }
 
-const styles = (theme: Theme) => createStyles<ClassKeys>({
+const styles = (theme: Theme) => createStyles<ClassKeys, {}>({
     // Globally remove the blue outline from all ReactVirtualized components
     '@global [class^="ReactVirtualized__"]': {
         outline: 'none',
     },
     contentContainer: {
-        padding: theme.spacing.unit * 2,
+        padding: 16,
         width: '100%',
-        overflowY: 'auto',
+        // overflowY: 'auto',
         height: '100vh',
     },
     content: {
@@ -55,6 +56,7 @@ class Content extends React.Component<PropsType, IState> {
 
                 <Route path='/react' component={ReactRouting} />
                 <Route path='/meteor' component={MeteorRouting} />
+                <Route path='/react-hooks' component={ReactHooksRouting} />
             </Switch>
         </ScrollContext.Provider>;
     }

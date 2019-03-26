@@ -1,8 +1,9 @@
 import * as React from 'react';
 import Routing from 'src/routing';
-import { Button, createStyles, Grid, withStyles, WithStyles } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
+import { createStyles, WithStyles, withStyles } from '@material-ui/styles';
 
-const styles = createStyles<ClassKeys>({
+const styles = createStyles<ClassKeys, {}>({
     gridContainer: {
         maxWidth: 960,
         margin: '0 auto',
@@ -27,14 +28,19 @@ function Landing(props: PropsType) {
     return (
         <>
             <h1 style={{ textAlign: 'center' }}>TECHMEETINGS</h1>
-            <Grid container spacing={24} className={classes.gridContainer}>
-                <Grid item xs={12} md={4}>
-                    <Button className={classes.button} variant='contained' color='secondary' onClick={() => Routing.navigate('/react')}>React 16.7</Button>
+            <div className={classes.gridContainer}>
+                <Grid container spacing={3}>
+                    <Grid item xs={12} md={4}>
+                        <Button className={classes.button} variant='contained' color='secondary' onClick={() => Routing.navigate('/react')}>React 16.7</Button>
+                    </Grid>
+                    <Grid item xs={12} md={4}>
+                        <Button className={classes.button} variant='contained' color='primary' onClick={() => Routing.navigate('/meteor')}>Meteor</Button>
+                    </Grid>
+                    <Grid item xs={12} md={4}>
+                        <Button className={classes.button} variant='contained' color='default' onClick={() => Routing.navigate('/react-hooks')}>🎣</Button>
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} md={4}>
-                    <Button className={classes.button} variant='contained' color='primary' onClick={() => Routing.navigate('/meteor')}>Meteor</Button>
-                </Grid>
-            </Grid>
+            </div>
         </>
     );
 }

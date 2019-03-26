@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createStyles, withStyles } from '@material-ui/core';
+import { createStyles, withStyles } from '@material-ui/styles';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import MeteorLanding from 'src/Modules/TechmeetingMeteor/01 - Meteor Landing/MeteorLanding';
 import MeteorIntroduction from 'src/Modules/TechmeetingMeteor/02 - Meteor Introduction/MeteorIntroduction';

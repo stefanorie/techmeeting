@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { createStyles, WithStyles, withStyles } from '@material-ui/core';
+import { createStyles, WithStyles, withStyles } from '@material-ui/styles';
 import { TimelineMax } from 'gsap';
 import DisneyCastle from 'src/Components/DisneyCastle/DisneyCastle';
 
-const styles = createStyles<ClassKeys>({
+const styles = createStyles<ClassKeys, {}>({
     '@global body': {
         backgroundImage: 'unset !important',
         backgroundColor: '#efefef',

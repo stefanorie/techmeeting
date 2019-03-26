@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Button, createStyles, Grid, withStyles, WithStyles } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
+import { createStyles, withStyles, WithStyles } from '@material-ui/styles';
 import { TimelineMax } from 'gsap';
 import CodeBlock from 'src/Components/CodeBlock/CodeBlock';
 import Kapje from 'src/Components/Kapje/Kapje';
@@ -9,7 +10,7 @@ interface IState {
     kleurKapje: string;
 }
 
-const styles = createStyles<ClassKeys>({
+const styles = createStyles<ClassKeys, {}>({
     container: {
         maxWidth: 1440,
     },
@@ -68,7 +69,7 @@ class ReactMemo001 extends React.Component<PropsType, IState> {
             <div>
                 <PageTitle onClick={this.resumePlay}>React Memo(ization)</PageTitle>
 
-                <Grid container spacing={24} className={classes.container}>
+                <Grid container spacing={3} className={classes.container}>
                     <Grid item xs={6} id='codeGrid'>
                         <CodeBlock>
                             {`

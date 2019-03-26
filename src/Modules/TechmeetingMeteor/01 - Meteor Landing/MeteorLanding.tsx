@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Routing from 'src/routing';
-import { createStyles, WithStyles, withStyles } from '@material-ui/core';
+import { createStyles, withStyles, WithStyles } from '@material-ui/styles';
 import { animated, Transition } from 'react-spring';
 
 interface IProps {
@@ -10,7 +10,7 @@ interface IState {
     showLogo: boolean;
 }
 
-const styles = createStyles<ClassKeys>({
+const styles = createStyles<ClassKeys, {}>({
     revealsMain: {
         width: '100%',
         height: '100%',

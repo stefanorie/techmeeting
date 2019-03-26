@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Routing from 'src/routing';
-import { Button, createStyles, WithStyles, withStyles } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import { createStyles, WithStyles, withStyles } from '@material-ui/styles';
 import { RouteComponentProps, withRouter } from 'react-router';
 
 interface IState {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Routing from 'src/routing';
-import { createStyles, WithStyles, withStyles } from '@material-ui/core';
+import { createStyles, WithStyles, withStyles } from '@material-ui/styles';
 import { animated, Trail, Transition } from 'react-spring';
 import CodeBlock from 'src/Components/CodeBlock/CodeBlock';
 
@@ -13,7 +13,7 @@ interface IState {
     pageIndex: number;
 }
 
-const styles = createStyles<ClassKeys>({
+const styles = createStyles<ClassKeys, {}>({
     main: {
         position: 'relative',
         width: '100%',
