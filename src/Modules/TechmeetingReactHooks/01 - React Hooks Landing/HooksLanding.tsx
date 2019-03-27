@@ -16,17 +16,6 @@ const data = [
 ];
 
 const useStyles = makeStyles({
-    root: {
-        margin: 0,
-        height: '100%',
-        width: '100%',
-        overflow: 'hidden',
-        userSelect: 'none',
-        padding: 24,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     container: {
         position: 'relative',
         display: 'flex',
@@ -99,14 +88,12 @@ export default function HooksLanding() {
     }
 
     return (
-        <div className={classes.root}>
-            <animated.div className={classes.container} style={{ ...rest, width: size, height: size }} onClick={handleClick}>
-                <div className={classes.title}>{open ? '' : `🎣`}</div>
+        <animated.div className={classes.container} style={{ ...rest, width: size, height: size }} onClick={handleClick}>
+            <div className={classes.title}>{open ? '' : `🎣`}</div>
 
-                {transitions.map(({ item, key, props }) => (
-                    <animated.div key={key} className={classes.item} style={{ ...props }}>{item}</animated.div>
-                ))}
-            </animated.div>
-        </div>
+            {transitions.map(({ item, key, props }) => (
+                <animated.div key={key} className={classes.item} style={{ ...props }}>{item}</animated.div>
+            ))}
+        </animated.div>
     );
 }
