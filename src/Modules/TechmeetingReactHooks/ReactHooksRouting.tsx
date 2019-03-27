@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { makeStyles } from '@material-ui/styles';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import HooksLanding from 'src/Modules/TechmeetingReactHooks/01 - React Hooks Landing/HooksLanding';
 import HooksIntroduction from 'src/Modules/TechmeetingReactHooks/02 - Hooks introduction/HooksIntroduction';
@@ -11,9 +12,26 @@ import UseLocalStorageHook from 'src/Modules/TechmeetingReactHooks/08 - useLocal
 import UsePageTitleHook from 'src/Modules/TechmeetingReactHooks/08 - usePageTitle hook/UsePageTitleHook';
 import GetHooked from 'src/Modules/TechmeetingReactHooks/09 - Get hooked/GetHooked';
 
+const useStyles = makeStyles({
+    root: {
+        margin: 0,
+        height: '100%',
+        width: '100%',
+        overflow: 'hidden',
+        userSelect: 'none',
+        padding: 24,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: 24,
+    },
+});
+
 function ReactHooksRouting() {
+    const classes = useStyles();
+
     return (
-        <>
+        <div className={classes.root}>
             <Switch>
                 <Route exact path='/react-hooks'>
                     <Redirect to='/react-hooks/landing' />
@@ -30,7 +48,7 @@ function ReactHooksRouting() {
                 <Route exact path='/react-hooks/use-page-title-hook' component={UsePageTitleHook} />
                 <Route exact path='/react-hooks/get-hooked' component={GetHooked} />
             </Switch>
-        </>
+        </div>
     );
 }
 

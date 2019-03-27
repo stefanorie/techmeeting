@@ -2,6 +2,6 @@ import * as React from 'react';
 
 export default function HooksIntroduction() {
     return (
-        <div>Hooks introduction!</div>
+        <div>Wat zijn hooks ook alweer?</div>
     );
 }

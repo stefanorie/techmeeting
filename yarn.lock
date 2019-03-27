@@ -6708,12 +6708,12 @@ react-router@5.0.0, react-router@^5.0.0:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-spring@^7.2.10:
-  version "7.2.10"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-7.2.10.tgz#eacbf429327bea058677c3a01af87b9c387f4aa6"
-  integrity sha512-bsbgQh1DzTqjwuD1tDZ7Nu04G5JhNNXdezkcJ5xXNboedN/MPe0K+X/MtypUxXBUCLYT0r5oKT3zj4STqVpnPA==
+react-spring@^8.0.18:
+  version "8.0.18"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.18.tgz#f6fa09ab5acdeb37618c0e340d59830171b95c33"
+  integrity sha512-gb1Rtsnez2gxIHtbrbwQsAjE4ir/62m+gI+eT+1E0Uky5L1PbLccbywRIdIpK3W5jiNmU6OlEazVk0tfI8pZrA==
   dependencies:
-    "@babel/runtime" "^7.0.0"
+    "@babel/runtime" "^7.3.1"
 
 react-syntax-highlighter@^10.1.2:
   version "10.1.2"

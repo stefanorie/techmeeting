@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Routing from 'src/routing';
 import { createStyles, withStyles, WithStyles } from '@material-ui/styles';
-import { animated, Trail, Transition } from 'react-spring';
+import { animated, Trail, Transition } from 'react-spring/renderprops';
 
 const logoReact = require('src/Resources/Images/logo-react.png');
 const logoAngular = require('src/Resources/Images/logo-angular.png');

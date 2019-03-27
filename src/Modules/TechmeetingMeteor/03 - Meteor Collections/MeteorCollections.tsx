@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Routing from 'src/routing';
 import { createStyles, WithStyles, withStyles } from '@material-ui/styles';
-import { animated, Trail, Transition } from 'react-spring';
+import { animated, Trail, Transition } from 'react-spring/renderprops';
 import CodeBlock from 'src/Components/CodeBlock/CodeBlock';
 
 const meteorPublicationsUrl = require('src/Resources/Images/meteor-publications.jpg');

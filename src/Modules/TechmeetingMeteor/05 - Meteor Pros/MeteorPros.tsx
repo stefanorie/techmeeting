@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Routing from 'src/routing';
 import { createStyles, WithStyles, withStyles } from '@material-ui/styles';
-import { animated, Transition } from 'react-spring';
+import { animated, Transition } from 'react-spring/renderprops';
 
 interface IProps {
 }
