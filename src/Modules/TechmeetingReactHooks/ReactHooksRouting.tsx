@@ -8,9 +8,9 @@ import UseStateHook from 'src/Modules/TechmeetingReactHooks/04 - useState hook/U
 import UseEffectHook from 'src/Modules/TechmeetingReactHooks/05 - useEffect hook/UseEffectHook';
 import UseContextHook from 'src/Modules/TechmeetingReactHooks/06 - useContext hook/UseContextHook';
 import CustomHooks from 'src/Modules/TechmeetingReactHooks/07 - Custom hooks/CustomHooks';
-import UseLocalStorageHook from 'src/Modules/TechmeetingReactHooks/08 - useLocalStorage hook/UseLocalStorageHook';
 import UsePageTitleHook from 'src/Modules/TechmeetingReactHooks/08 - usePageTitle hook/UsePageTitleHook';
-import GetHooked from 'src/Modules/TechmeetingReactHooks/09 - Get hooked/GetHooked';
+import UseLocalStorageHook from 'src/Modules/TechmeetingReactHooks/09 - useLocalStorage hook/UseLocalStorageHook';
+import GetHooked from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/GetHooked';
 
 const clinicUrl = require('src/Resources/Images/clinic.jpg');
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getThemeProps, makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 import { animated, useSpring } from 'react-spring';
 
 interface IProps {
@@ -19,14 +19,39 @@ const useStyles = makeStyles({
         height: '100%',
         backgroundColor: '#fff',
         boxShadow: '0 10px 30px -5px rgba(0, 0, 0, 0.3)',
-        padding: 16,
+        padding: 32,
         borderRadius: 4,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
-        fontSize: 24,
+        fontSize: 48,
         cursor: 'pointer',
+
+        '& ul': {
+            listStyle: 'none',
+        },
+
+        '& li': {
+            textAlign: 'left',
+            fontSize: 38,
+
+            '&:before': {
+                content: '"🎣"',
+                marginRight: 12,
+            },
+        },
+
+        // Selects the CodeBlock container
+        '& pre': {
+            padding: '0 !important',
+            boxShadow: 'none !important',
+            border: '0 !important',
+            margin: '0 !important',
+            overflow: 'unset !important',
+            maxWidth: '100%',
+            maxHeight: '100%',
+        },
     },
     cardContent: {
         position: 'relative',
@@ -39,7 +64,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function FlipCard(props: IProps) {
+export default function RotatingCardTexts(props: IProps) {
     const classes = useStyles();
     const [flipped, setFlipped] = React.useState(false);
 
@@ -55,8 +80,12 @@ export default function FlipCard(props: IProps) {
         config: { mass: 5, tension: 500, friction: 80 },
     });
 
+    function handleFlip() {
+        setFlipped(prevFlipped => !prevFlipped);
+    }
+
     return (
-        <div className={classes.container} onClick={() => setFlipped(prevFlipped => !prevFlipped)}>
+        <div className={classes.container} onClick={handleFlip}>
             <animated.div className={classes.card} style={{ opacity: frontOpacity, transform: frontTransform, zIndex: frontOpacity }}>
                 <div className={classes.cardContent}>
                     {props.front}

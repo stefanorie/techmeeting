@@ -63,6 +63,8 @@ function Quiz(props: PropsType) {
             return;
         }
 
+        props.enqueueSnackbar('Goed!', { autoHideDuration: 1000, variant: 'success' });
+
         if (questionIndex === questions.length - 1) {
             props.onFinish();
         } else {

@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { Button, Input } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import { Input, Button } from '@material-ui/core';
-import Quiz from 'src/Modules/TechmeetingReactHooks/09 - Get hooked/Components/Quiz';
+import Quiz from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Components/Quiz';
 
 const wallpaper = require('src/Resources/Images/windows-xp.jpg');
 
@@ -33,7 +33,7 @@ export default function LaptopPuzzle() {
     const [showMineSweeper, setShowMineSweeper] = React.useState(false);
 
     function handleLogin() {
-        if (password === '123') {
+        if (password === 'usePassword') {
             setShowQuiz(true);
         }
     }

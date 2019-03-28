@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/styles';
-import { useSprings, animated, interpolate } from 'react-spring';
-import { useGesture } from 'react-with-gesture';
 import * as React from 'react';
+import { makeStyles } from '@material-ui/styles';
+import { animated, interpolate, useSprings } from 'react-spring';
+import { useGesture } from 'react-with-gesture';
 
 const yellow = '#ffeb3b';
 const green = '#4caf50';
@@ -15,7 +15,7 @@ const cards = [
     red,
     green,
     blue,
-    red,
+    green,
     blue,
     blue,
 ];
