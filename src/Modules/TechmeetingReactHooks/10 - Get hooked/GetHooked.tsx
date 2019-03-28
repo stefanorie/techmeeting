@@ -11,6 +11,11 @@ import FlashLight from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Compon
 import useMouse from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Hooks/useMouse';
 import ColorCards from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Components/ColorCards';
 import ColorCardsPuzzle from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Scenes/ColorCardsPuzzle';
+import Key from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Components/Key';
+import { withSnackbarProps, withSnackbar } from 'notistack';
+import Lock from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Components/Lock';
+import useKeyPress from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Hooks/useKeyPress';
+import BulletinBoard from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Components/BulletinBoard';
 
 const clinicUrl = require('src/Resources/Images/clinic.jpg');
 
@@ -31,7 +36,9 @@ const useStyles = makeStyles({
     },
 });
 
-export default function GetHooked() {
+type PropsType = withSnackbarProps;
+
+function GetHooked(props: PropsType) {
     const classes = useStyles();
     const [hasKey, setHasKey] = React.useState(false);
     const [hasFlashlight, setHasFlashlight] = React.useState(false);
@@ -40,17 +47,43 @@ export default function GetHooked() {
     const ref = React.useRef(null);
     const { elX, elY } = useMouse(ref);
 
+    // Hold L to toggle flash light.
+    const toggleFlashLight = useKeyPress('l');
+
+    function handleKeyClick() {
+        setHasKey(true);
+        props.enqueueSnackbar('Sleutel gevonden!', { variant: 'success' });
+    }
+
+    function handleLockClick() {
+        if (!hasKey) {
+            props.enqueueSnackbar('Deze zit op slot!', { variant: 'error' });
+            return;
+        }
+
+        if (!hasFlashlight) {
+            setHasFlashlight(true);
+            props.enqueueSnackbar('Je hebt een UV zaklamp gevonden! Houd "L" ingedrukt om deze te gebruiken.', { autoHideDuration: 10000, variant: 'success' });
+            return;
+        }
+
+        props.enqueueSnackbar('Deze heb je al leeg geplunderd...', { variant: 'warning' });
+    }
+
     return (
         <div className={classes.gameContainer} ref={ref}>
-            {!currentPuzzle &&
-                <>
-                    <Screen onClick={() => setCurrentPuzzle('laptop')} />
-                    <HiddenText />
-                    <Safe onClick={() => setCurrentPuzzle('safe')} />
-                    <ColorCards onClick={() => setCurrentPuzzle('color-cards')} />
-                    {hasFlashlight && <FlashLight x={elX} y={elY} />}
-                </>
-            }
+            <div style={{ opacity: currentPuzzle ? 0 : 1 }}>
+                <Screen onClick={() => setCurrentPuzzle('laptop')} />
+                <Safe onClick={() => setCurrentPuzzle('safe')} />
+                <ColorCards onClick={() => setCurrentPuzzle('color-cards')} />
+                <BulletinBoard onClick={() => setCurrentPuzzle('code-cards')} />
+
+                <HiddenText />
+                <Lock onClick={handleLockClick} />
+
+                {hasFlashlight && toggleFlashLight && <FlashLight x={elX} y={elY} />}
+                {!hasKey && <Key onClick={handleKeyClick} />}
+            </div>
 
             {Boolean(currentPuzzle) &&
                 <Button className={classes.backButton} variant='contained' onClick={() => setCurrentPuzzle('')}>⬅ Terug</Button>
@@ -64,3 +97,5 @@ export default function GetHooked() {
         </div>
     );
 }
+
+export default withSnackbar(GetHooked);

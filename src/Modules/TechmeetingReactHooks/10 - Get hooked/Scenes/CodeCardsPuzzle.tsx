@@ -5,12 +5,17 @@ import { withSnackbar, withSnackbarProps } from 'notistack';
 import CodeBlock from 'src/Components/CodeBlock/CodeBlock';
 import HoverCard from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Components/HoverCard';
 
+const imgUrl = require('src/Resources/Images/prikbord.png');
+
 const useStyles = makeStyles({
     container: {
         position: 'relative',
         width: '100%',
         height: '100%',
         padding: 24,
+        backgroundImage: `url(${imgUrl})`,
+        backgroundSize: '110% 110%',
+        backgroundPosition: 'center center',
     },
     title: {
         color: '#fff',
@@ -29,6 +34,7 @@ const useStyles = makeStyles({
         margin: '0 auto',
         transform: 'rotate(-8deg)',
         padding: 24,
+        fontFamily: '"Indie Flower", cursive',
     },
 });
 
@@ -185,7 +191,7 @@ function CodeCardsPuzzle(props: PropsType) {
 
                 {showPassword &&
                     <div className={classes.passwordPaper}>
-                        Wachtwoord van laptop <br /><br />
+                        Wachtwoord van laptop: <br /><br />
                         usePassword
                     </div>
                 }

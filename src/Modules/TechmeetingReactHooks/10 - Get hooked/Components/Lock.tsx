@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@material-ui/styles';
 
-const imgUrl = require('src/Resources/Images/key-on-ring.png');
+const imgUrl = require('src/Resources/Images/lock.png');
 
 interface IProps {
     onClick: () => void;
@@ -10,13 +10,14 @@ interface IProps {
 const useStyles = makeStyles({
     container: {
         position: 'absolute',
-        width: 16,
-        top: 292,
-        left: 842,
+        width: 30,
+        top: 520,
+        left: 195,
+        transform: 'rotate(-14deg)',
     }
 });
 
-export default function Key(props: IProps) {
+export default function Lock(props: IProps) {
     const classes = useStyles();
 
     return (

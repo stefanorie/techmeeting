@@ -24,13 +24,22 @@ const useStyles = makeStyles({
         backgroundColor: 'rgba(255, 255, 255, 0.8)',
         boxShadow: '0 3px 10px rgba(0, 0, 0, 0.3)',
     },
+    hint: {
+        fontSize: 64,
+        fontWeight: 'bold',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        padding: '24px 48px',
+        borderRadius: 8,
+        letterSpacing: 16,
+        boxShadow: '0 3px 10px rgba(0, 0, 0, 0.3)',
+    }
 });
 
 export default function LaptopPuzzle() {
     const classes = useStyles();
     const [password, setPassword] = React.useState('');
     const [showQuiz, setShowQuiz] = React.useState(false);
-    const [showMineSweeper, setShowMineSweeper] = React.useState(false);
+    const [showHint, setShowHint] = React.useState(false);
 
     function handleLogin() {
         if (password === 'usePassword') {
@@ -40,13 +49,13 @@ export default function LaptopPuzzle() {
 
     function handleFinishQuiz() {
         setShowQuiz(false);
-        setShowMineSweeper(true);
+        setShowHint(true);
     }
 
     return (
         <div className={classes.container}>
 
-            {!showQuiz && !showMineSweeper &&
+            {!showQuiz && !showHint &&
                 <div className={classes.passwordContainer}>
                     <Input type='password' value={password} onChange={e => setPassword(e.target.value)} />
                     <Button variant='text' color='primary' onClick={handleLogin}>Inloggen</Button>
@@ -57,8 +66,8 @@ export default function LaptopPuzzle() {
                 <Quiz onFinish={handleFinishQuiz} />
             }
 
-            {showMineSweeper &&
-                <div>MineSweeper!</div>
+            {showHint &&
+                <div className={classes.hint}>H O O K</div>
             }
         </div>
     );

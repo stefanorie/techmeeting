@@ -9,15 +9,15 @@ const blue = '#03a9f4';
 const red = '#f44336';
 
 const cards = [
+    blue,
     red,
+    blue,
+    green,
     yellow,
     green,
     red,
     green,
-    blue,
-    green,
-    blue,
-    blue,
+    blue
 ];
 
 const useStyles = makeStyles({

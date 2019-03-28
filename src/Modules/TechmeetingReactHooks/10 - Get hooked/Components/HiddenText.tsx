@@ -18,6 +18,6 @@ export default function HiddenText() {
     const classes = useStyles();
 
     return (
-        <div className={classes.container}>15 = 5</div>
+        <div className={classes.container}>10 = 0</div>
     );
 }

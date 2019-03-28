@@ -27,31 +27,6 @@ const useStyles = makeStyles({
         textAlign: 'center',
         fontSize: 48,
         cursor: 'pointer',
-
-        '& ul': {
-            listStyle: 'none',
-        },
-
-        '& li': {
-            textAlign: 'left',
-            fontSize: 38,
-
-            '&:before': {
-                content: '"🎣"',
-                marginRight: 12,
-            },
-        },
-
-        // Selects the CodeBlock container
-        '& pre': {
-            padding: '0 !important',
-            boxShadow: 'none !important',
-            border: '0 !important',
-            margin: '0 !important',
-            overflow: 'unset !important',
-            maxWidth: '100%',
-            maxHeight: '100%',
-        },
     },
     cardContent: {
         position: 'relative',
@@ -64,7 +39,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function RotatingCardTexts(props: IProps) {
+export default function FlipCard(props: IProps) {
     const classes = useStyles();
     const [flipped, setFlipped] = React.useState(false);
 
