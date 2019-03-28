@@ -21,6 +21,12 @@ const cards = [
 ];
 
 const useStyles = makeStyles({
+    container: {
+        position: 'relative',
+        width: '100%',
+        height: '100%',
+        background: 'linear-gradient(90deg, rgba(207,214,221,1) 0%, rgba(134,144,150,1) 35%, rgba(255,255,255,1) 100%)',
+    },
     cardContainer: {
         position: 'absolute',
         width: '100%',
@@ -50,7 +56,7 @@ const to = (i: number) => ({ x: 0, y: i * -4, scale: 1, rot: -10 + Math.random()
 const from = (i: number) => ({ x: 0, y: 1000, rot: 0, scale: 1.5 });
 const trans = (r: number, s: number) => `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
 
-export default function TableCardsPuzzle() {
+export default function ColorCardsPuzzle() {
     const classes = useStyles();
 
     const [gone] = React.useState(() => new Set());
@@ -72,13 +78,13 @@ export default function TableCardsPuzzle() {
     });
 
     return (
-        <>
+        <div className={classes.container}>
             {props.map(({ x, y, rot, scale }, i) => (
                 <animated.div key={i} className={classes.cardContainer} style={{ transform: interpolate([x, y], (x, y) => `translate3d(${x}px,${y}px,0)`) }}>
                     {/* This is the card itself, we're binding our gesture to it (and inject its index so we know which is which) */}
                     <animated.div {...bind(i)} className={classes.card} style={{ transform: interpolate([rot, scale], trans), backgroundColor: `${cards[i]}` }} />
                 </animated.div>
             ))}
-        </>
+        </div>
     );
 }

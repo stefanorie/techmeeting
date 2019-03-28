@@ -7,8 +7,10 @@ const useStyles = makeStyles({
         transform: 'skewX(8deg) rotateX(15deg) rotateZ(-12deg)',
         fontSize: 32,
         top: 520,
-        right: 110,
+        left: 900,
         color: '#faf9f7',
+        minWidth: 110,
+        zIndex: 20,
     },
 });
 

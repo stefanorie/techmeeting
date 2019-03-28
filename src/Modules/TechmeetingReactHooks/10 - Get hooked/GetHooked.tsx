@@ -6,7 +6,11 @@ import Screen from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Components
 import CodeCardsPuzzle from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Scenes/CodeCardsPuzzle';
 import LaptopPuzzle from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Scenes/LaptopPuzzle';
 import SafePuzzle from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Scenes/SafePuzzle';
-import TableCardsPuzzle from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Scenes/TableCardsPuzzle';
+import Safe from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Components/Safe';
+import FlashLight from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Components/FlashLight';
+import useMouse from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Hooks/useMouse';
+import ColorCards from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Components/ColorCards';
+import ColorCardsPuzzle from 'src/Modules/TechmeetingReactHooks/10 - Get hooked/Scenes/ColorCardsPuzzle';
 
 const clinicUrl = require('src/Resources/Images/clinic.jpg');
 
@@ -17,6 +21,7 @@ const useStyles = makeStyles({
         height: 720,
         boxShadow: '0 3px 3px rgba(0, 0, 0, 0.35)',
         backgroundImage: `url(${clinicUrl})`,
+        overflow: 'hidden',
     },
     backButton: {
         position: 'absolute',
@@ -32,13 +37,18 @@ export default function GetHooked() {
     const [hasFlashlight, setHasFlashlight] = React.useState(false);
     const [currentPuzzle, setCurrentPuzzle] = React.useState('');
 
-    return (
-        <div className={classes.gameContainer}>
+    const ref = React.useRef(null);
+    const { elX, elY } = useMouse(ref);
 
+    return (
+        <div className={classes.gameContainer} ref={ref}>
             {!currentPuzzle &&
                 <>
                     <Screen onClick={() => setCurrentPuzzle('laptop')} />
                     <HiddenText />
+                    <Safe onClick={() => setCurrentPuzzle('safe')} />
+                    <ColorCards onClick={() => setCurrentPuzzle('color-cards')} />
+                    {hasFlashlight && <FlashLight x={elX} y={elY} />}
                 </>
             }
 
@@ -48,7 +58,7 @@ export default function GetHooked() {
 
             {currentPuzzle === 'code-cards' && <CodeCardsPuzzle />}
             {currentPuzzle === 'laptop' && <LaptopPuzzle />}
-            {currentPuzzle === 'table-cards' && <TableCardsPuzzle />}
+            {currentPuzzle === 'color-cards' && <ColorCardsPuzzle />}
             {currentPuzzle === 'safe' && <SafePuzzle />}
 
         </div>
