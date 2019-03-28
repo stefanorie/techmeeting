@@ -9,7 +9,7 @@ const clinicUrl = require('src/Resources/Images/clinic.jpg');
 const useStyles = makeStyles({
     gameContainer: {
         position: 'relative',
-        width: 960,
+        width: 1280,
         height: 720,
         boxShadow: '0 3px 3px rgba(0, 0, 0, 0.35)',
         backgroundImage: `url(${clinicUrl})`,

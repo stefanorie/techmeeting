@@ -26,7 +26,7 @@ const useStyles = makeStyles({
         background: 'white',
         borderRadius: 4,
         cursor: 'pointer',
-        boxShadow: '0 10px 10px -5px rgba(0, 0, 0, 0.05)',
+        boxShadow: '0 10px 30px -5px rgba(0, 0, 0, 0.3)',
         willChange: 'width, height',
     },
     item: {
@@ -35,12 +35,20 @@ const useStyles = makeStyles({
         fontSize: 32,
         marginBottom: 4,
     },
-    title: {
+    fishingRodButton: {
         fontSize: 48,
         position: 'absolute',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    title: {
+        fontSize: 64,
+        position: 'absolute',
+        marginTop: -120,
+        color: '#fff',
+        fontWeight: 'bold',
+        textShadow: '0 1px 6px #000',
     },
 });
 
@@ -53,7 +61,7 @@ export default function HooksLanding() {
     const { size, ...rest } = useSpring({
         ref: springRef,
         config: config.gentle,
-        from: { opacity: 1, size: '20%', background: '#96fbc4' },
+        from: { opacity: 1, size: '10%', background: '#96fbc4' },
         to: async (next: any) => {
             if (step === 1) {
                 await next({ opacity: 1, size: '100%', background: 'white' });
@@ -61,6 +69,10 @@ export default function HooksLanding() {
                 await next({ opacity: 0, size: '100%', background: 'white' });
             }
         },
+    });
+
+    const { opacity: titleOpacity } = useSpring({
+        opacity: step === 0 ? 1 : 0,
     });
 
     const transRef = React.useRef();
@@ -88,12 +100,16 @@ export default function HooksLanding() {
     }
 
     return (
-        <animated.div className={classes.container} style={{ ...rest, width: size, height: size }} onClick={handleClick}>
-            <div className={classes.title}>{open ? '' : `🎣`}</div>
+        <>
+            <animated.div className={classes.title} style={{ opacity: titleOpacity }}>React hooks in de praktijk</animated.div>
 
-            {transitions.map(({ item, key, props }) => (
-                <animated.div key={key} className={classes.item} style={{ ...props }}>{item}</animated.div>
-            ))}
-        </animated.div>
+            <animated.div className={classes.container} style={{ ...rest, width: size, height: size }} onClick={handleClick}>
+                <div className={classes.fishingRodButton}>{open ? '' : `🎣`}</div>
+
+                {transitions.map(({ item, key, props }) => (
+                    <animated.div key={key} className={classes.item} style={{ ...props }}>{item}</animated.div>
+                ))}
+            </animated.div>
+        </>
     );
 }

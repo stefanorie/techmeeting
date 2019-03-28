@@ -12,12 +12,19 @@ import UseLocalStorageHook from 'src/Modules/TechmeetingReactHooks/08 - useLocal
 import UsePageTitleHook from 'src/Modules/TechmeetingReactHooks/08 - usePageTitle hook/UsePageTitleHook';
 import GetHooked from 'src/Modules/TechmeetingReactHooks/09 - Get hooked/GetHooked';
 
+const clinicUrl = require('src/Resources/Images/clinic.jpg');
+
 const useStyles = makeStyles({
+    '@global body': {
+        backgroundImage: `url(${clinicUrl})`,
+        backgroundSize: 'cover',
+        backgroundBlendMode: 'screen',
+        backgroundColor: '#9e9e9e',
+    },
     root: {
         margin: 0,
         height: '100%',
         width: '100%',
-        overflow: 'hidden',
         userSelect: 'none',
         padding: 24,
         display: 'flex',
