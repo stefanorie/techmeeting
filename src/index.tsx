@@ -2,9 +2,10 @@ import 'babel-polyfill'; // Has to be imported for IE to be able to load bundle.
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Routing from 'src/routing';
-import { CssBaseline } from '@material-ui/core';
+import { Button, CssBaseline } from '@material-ui/core';
 import { StylesProvider } from '@material-ui/styles';
 import { Route, Router, Switch } from 'react-router';
+import { SnackbarProvider } from 'notistack';
 import Frame from 'src/Components/Frame/Frame';
 
 // CSS for react virtualized
@@ -19,11 +20,18 @@ class App extends React.Component<any, any> {
             <>
                 <CssBaseline />
                 {/* <StylesProvider injectFirst> */}
-                <Router history={Routing.history()}>
-                    <Switch>
-                        <Route path='*' component={Frame} />
-                    </Switch>
-                </Router>
+                <SnackbarProvider
+                    autoHideDuration={3000}
+                    maxSnack={3}
+                    action={[<Button size='small' style={{ color: '#fff' }}>Sluiten</Button>]}
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+                >
+                    <Router history={Routing.history()}>
+                        <Switch>
+                            <Route path='*' component={Frame} />
+                        </Switch>
+                    </Router>
+                </SnackbarProvider>
                 {/* </StylesProvider> */}
             </>
         );

@@ -1,8 +1,8 @@
-import { makeStyles } from '@material-ui/styles';
 import * as React from 'react';
-import TableCardsPuzzle from 'src/Modules/TechmeetingReactHooks/09 - Get hooked/Scenes/TableCardsPuzzle';
-import SafePuzzle from 'src/Modules/TechmeetingReactHooks/09 - Get hooked/Scenes/SafePuzzle';
+import { makeStyles } from '@material-ui/styles';
 import LaptopPuzzle from 'src/Modules/TechmeetingReactHooks/09 - Get hooked/Scenes/LaptopPuzzle';
+import SafePuzzle from 'src/Modules/TechmeetingReactHooks/09 - Get hooked/Scenes/SafePuzzle';
+import TableCardsPuzzle from 'src/Modules/TechmeetingReactHooks/09 - Get hooked/Scenes/TableCardsPuzzle';
 
 const clinicUrl = require('src/Resources/Images/clinic.jpg');
 
@@ -23,7 +23,7 @@ export default function GetHooked() {
 
     return (
         <div className={classes.gameContainer}>
-            <LaptopPuzzle />
+            {currentPuzzle === 'laptop' && <LaptopPuzzle />}
             {currentPuzzle === 'table-cards' && <TableCardsPuzzle />}
             {currentPuzzle === 'safe' && <SafePuzzle />}
         </div>

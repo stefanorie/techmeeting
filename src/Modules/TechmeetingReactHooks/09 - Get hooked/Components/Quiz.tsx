@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { makeStyles } from '@material-ui/styles';
 import { Button } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
+import { withSnackbar, withSnackbarProps } from 'notistack';
 
 interface IProps {
     onFinish: () => void;
@@ -14,12 +15,14 @@ const useStyles = makeStyles({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 8,
+        padding: 16,
         width: 500,
         height: 300,
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
         boxShadow: '0 3px 10px rgba(0, 0, 0, 0.3)',
         marginBottom: 32,
+        textAlign: 'center',
+        borderRadius: 4,
     },
     buttonsContainer: {
         display: 'flex',
@@ -31,13 +34,22 @@ const useStyles = makeStyles({
 });
 
 const questions: { question: string, answer: boolean }[] = [
-    { answer: true, question: 'Vraagje 1?' },
-    { answer: true, question: 'Vraagje 2?' },
-    { answer: true, question: 'Vraagje 3?' },
-    { answer: true, question: 'Vraagje 4?' },
+    { answer: true, question: 'React hooks zijn eigenlijk gewoon JavaScript functies.' },
+    { answer: false, question: 'React is van plan om class componenten deprecated te maken en alleen nog maar hooks te ondersteunen.' },
+    { answer: false, question: 'Hooks kunnen zonder problemen gebruikt worden binnen loops, condities en geneste functies.' },
+    { answer: false, question: 'Je kan componentDidCatch via de useEffect hook afvangen.' },
+    { answer: false, question: 'De useState hook leeft altijd in de globale scope van de app.' },
+    { answer: true, question: 'Je kan de uitvoering van useEffect limiteren door een array van waardes mee te geven.' },
+    { answer: false, question: 'Het aanpassen van de .current property van useRef zorgt voor een re-render.' },
+    { answer: true, question: 'React is afhankelijk van de volgorde waarin hooks worden aangeroepen.' },
+    { answer: true, question: 'Het is aangeraden om custom hooks altijd te starten met "use".' },
+    { answer: false, question: 'Als 2 componenten dezelfde hook gebruiken, dan delen zij dezelfde state.' },
+
 ];
 
-export default function Quiz(props: IProps) {
+type PropsType = IProps & withSnackbarProps;
+
+function Quiz(props: PropsType) {
     const classes = useStyles();
     const [questionIndex, setQuestionIndex] = React.useState(0);
 
@@ -47,6 +59,7 @@ export default function Quiz(props: IProps) {
         if (currentQuestion.answer !== answerGiven) {
             // TODO: Melding tonen dat ie niet goed was en dat je opnieuw moet beginnen.
             setQuestionIndex(0);
+            props.enqueueSnackbar('Nopes die was niet goed, terug naar start!', { variant: 'error' });
             return;
         }
 
@@ -70,3 +83,5 @@ export default function Quiz(props: IProps) {
         </div>
     );
 }
+
+export default withSnackbar(Quiz);

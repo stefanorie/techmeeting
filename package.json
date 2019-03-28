@@ -63,6 +63,7 @@
         "gsap": "^2.0.2",
         "history": "^4.7.2",
         "lodash": "^4.17.11",
+        "notistack": "^0.5.1",
         "react": "^16.8.5",
         "react-dom": "^16.8.5",
         "react-router": "^5.0.0",
