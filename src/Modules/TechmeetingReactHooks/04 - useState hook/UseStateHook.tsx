@@ -25,8 +25,8 @@ React.useState();
         {`
 const titleState = React.useState('Mooie titel');
 
-const stateArray[0];
-const stateArray[1]('Nieuwe titel');
+titleState[0];
+titleState[1]('Nieuwe titel');
             `}
     </CodeBlock>,
     <CodeBlock>
